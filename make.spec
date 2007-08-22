@@ -1,20 +1,20 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.81
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
-License:	GPL
+License:	GPLv2+
 Group:		Development/Other
 Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
 # to remove once those po files are included in standard sources
 Source1:	%{name}-pofiles.tar.bz2
-Patch0:		make-3.80-no-hires-timestamp.patch.bz2
-Patch1:		make-3.80-lib64.patch.bz2
-Patch3:		make-3.80-gfortran.patch.bz2
+Patch0:		make-3.80-no-hires-timestamp.patch
+Patch1:		make-3.80-lib64.patch
+Patch3:		make-3.80-gfortran.patch
 BuildRequires:	gettext-devel
-Requires(Pre):		/sbin/install-info
-Requires(Post):		/sbin/install-info
+Requires(pre):		/sbin/install-info
+Requires(post):		/sbin/install-info
 Buildroot:	%_tmppath/%name-root
 
 %description
@@ -33,9 +33,7 @@ commonly used to simplify the process of installing programs.
 # WARNING: only configure script is patched
 %patch0 -p1 -b .no-hires-timestamp
 %patch1 -p1 -b .lib64
-%if %{mdkversion} >= 200600
 %patch3 -p1 -b .gfortran
-%endif
 
 %build
 %configure2_5x
@@ -71,7 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %name.lang
 %defattr(-,root,root)
-%doc ABOUT-NLS AUTHORS COPYING ChangeLog README README.customs SCOPTIONS NEWS
+%doc ABOUT-NLS AUTHORS ChangeLog README README.customs SCOPTIONS NEWS
 %doc glob/COPYING.LIB glob/ChangeLog
 %_bindir/make
 %_bindir/gmake
