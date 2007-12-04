@@ -13,8 +13,8 @@ Patch0:		make-3.80-no-hires-timestamp.patch
 Patch1:		make-3.80-lib64.patch
 Patch3:		make-3.80-gfortran.patch
 BuildRequires:	gettext-devel
-Requires(pre):		/sbin/install-info
-Requires(post):		/sbin/install-info
+Requires(pre):		info-install
+Requires(post):		info-install
 Buildroot:	%_tmppath/%name-root
 
 %description
