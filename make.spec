@@ -15,7 +15,6 @@ Patch3:		make-3.80-gfortran.patch
 BuildRequires:	gettext-devel
 Requires(pre):		info-install
 Requires(post):		info-install
-Buildroot:	%_tmppath/%name-root
 
 %description
 A GNU tool for controlling the generation of executables and other
