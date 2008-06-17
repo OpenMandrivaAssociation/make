@@ -1,7 +1,7 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.81
-Release:	%mkrel 2
+Release:	%mkrel 3
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
