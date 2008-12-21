@@ -1,7 +1,7 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.81
-Release:	%mkrel 3
+Release:	%mkrel 4
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
@@ -31,7 +31,7 @@ commonly used to simplify the process of installing programs.
 %prep
 %setup -q -a1
 # WARNING: only configure script is patched
-%patch0 -p1 -b .no-hires-timestamp
+%patch0 -p0 -b .no-hires-timestamp
 %patch1 -p1 -b .lib64
 %patch3 -p1 -b .gfortran
 
