@@ -1,7 +1,7 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
-Version:	3.81
-Release:	%mkrel 5
+Version:	3.82
+Release:	%mkrel 1
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
@@ -9,13 +9,12 @@ Group:		Development/Other
 Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
 # to remove once those po files are included in standard sources
 Source1:	%{name}-pofiles.tar.bz2
-Patch0:		make-3.80-no-hires-timestamp.patch
-Patch1:		make-3.80-lib64.patch
+Patch1:		make-3.82-lib64.patch
 Patch3:		make-3.80-gfortran.patch
 BuildRequires:	gettext-devel
 Requires(pre):		info-install
 Requires(post):		info-install
-Buildroot:	%_tmppath/%name-root
+Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 A GNU tool for controlling the generation of executables and other
@@ -30,13 +29,12 @@ commonly used to simplify the process of installing programs.
 
 %prep
 %setup -q -a1
-# WARNING: only configure script is patched
-%patch0 -p0 -b .no-hires-timestamp
 %patch1 -p1 -b .lib64
 %patch3 -p1 -b .gfortran
 
 %build
-%configure2_5x
+%configure2_5x \
+	--disable-rpath
 %make
 
 %check
@@ -44,22 +42,22 @@ commonly used to simplify the process of installing programs.
 make check
 
 %install
-rm -rf $RPM_BUILD_ROOT/
+rm -rf %{buildroot}
 
-%makeinstall
+%makeinstall_std
 
-ln -sf make $RPM_BUILD_ROOT%_bindir/gmake
+ln -sf make %{buildroot}%{_bindir}/gmake
 
 # some hand dealing; to remove when the %{name}-pofiles.tar.bz2 is removed
 for i in i18n/*.po ; do
-  mkdir -p $RPM_BUILD_ROOT/%{_datadir}/locale/`basename $i .po`/LC_MESSAGES
-  msgfmt -v -o $RPM_BUILD_ROOT/%{_datadir}/locale/`basename $i .po`/LC_MESSAGES/%{name}.mo $i
+  mkdir -p %{buildroot}%{_datadir}/locale/`basename $i .po`/LC_MESSAGES
+  msgfmt -v -o %{buildroot}%{_datadir}/locale/`basename $i .po`/LC_MESSAGES/%{name}.mo $i
 done
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %post
 %_install_info make.info
