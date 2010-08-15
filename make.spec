@@ -7,8 +7,6 @@ Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
 Group:		Development/Other
 Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
-# to remove once those po files are included in standard sources
-Source1:	%{name}-pofiles.tar.bz2
 Patch1:		make-3.82-lib64.patch
 Patch3:		make-3.80-gfortran.patch
 # https://savannah.gnu.org/bugs/?30723
@@ -30,7 +28,7 @@ The GNU make tool should be installed on your system because it is
 commonly used to simplify the process of installing programs.
 
 %prep
-%setup -q -a1
+%setup -q
 %patch1 -p1 -b .lib64
 %patch3 -p1 -b .gfortran
 %patch4 -p1
@@ -50,12 +48,6 @@ rm -rf %{buildroot}
 %makeinstall_std
 
 ln -sf make %{buildroot}%{_bindir}/gmake
-
-# some hand dealing; to remove when the %{name}-pofiles.tar.bz2 is removed
-for i in i18n/*.po ; do
-  mkdir -p %{buildroot}%{_datadir}/locale/`basename $i .po`/LC_MESSAGES
-  msgfmt -v -o %{buildroot}%{_datadir}/locale/`basename $i .po`/LC_MESSAGES/%{name}.mo $i
-done
 
 %find_lang %{name}
 
