@@ -11,6 +11,8 @@ Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
 Source1:	%{name}-pofiles.tar.bz2
 Patch1:		make-3.82-lib64.patch
 Patch3:		make-3.80-gfortran.patch
+# https://savannah.gnu.org/bugs/?30723
+Patch4:		make-bug-30723.patch
 BuildRequires:	gettext-devel
 Requires(pre):		info-install
 Requires(post):		info-install
@@ -31,6 +33,7 @@ commonly used to simplify the process of installing programs.
 %setup -q -a1
 %patch1 -p1 -b .lib64
 %patch3 -p1 -b .gfortran
+%patch4 -p1
 
 %build
 %configure2_5x \
