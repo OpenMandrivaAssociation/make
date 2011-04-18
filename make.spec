@@ -1,7 +1,7 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.82
-Release:	%mkrel 2
+Release:	%mkrel 3
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
@@ -10,7 +10,8 @@ Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
 Patch1:		make-3.82-lib64.patch
 Patch3:		make-3.80-gfortran.patch
 # https://savannah.gnu.org/bugs/?30723
-Patch4:		make-bug-30723.patch
+# https://savannah.gnu.org/bugs/?30612
+Patch4:		make-3.82-savannah-bugs-30612-30723.patch.bz2
 BuildRequires:	gettext-devel
 Requires(pre):		info-install
 Requires(post):		info-install
