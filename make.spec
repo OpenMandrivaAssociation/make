@@ -1,13 +1,14 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.82
-Release:	%mkrel 3
+Release:	%mkrel 4
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
 Group:		Development/Other
-Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
+Source0:	ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
 Patch1:		make-3.82-lib64.patch
+Patch2:		make-fix_whitespace_tokenization.diff
 Patch3:		make-3.80-gfortran.patch
 # https://savannah.gnu.org/bugs/?30723
 # https://savannah.gnu.org/bugs/?30612
@@ -15,7 +16,6 @@ Patch4:		make-3.82-savannah-bugs-30612-30723.patch.bz2
 BuildRequires:	gettext-devel
 Requires(pre):		info-install
 Requires(post):		info-install
-Buildroot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 A GNU tool for controlling the generation of executables and other
@@ -31,8 +31,9 @@ commonly used to simplify the process of installing programs.
 %prep
 %setup -q
 %patch1 -p1 -b .lib64
+%patch2 -p1 -b .bug33125
 %patch3 -p1 -b .gfortran
-%patch4 -p1
+%patch4 -p1 -b .bugs30612-30723
 
 %build
 %configure2_5x \
