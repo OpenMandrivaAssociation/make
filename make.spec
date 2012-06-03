@@ -1,12 +1,12 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.82
-Release:	%mkrel 4
+Release:	5
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
 Group:		Development/Other
-Source0:	ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
+Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.bz2
 Patch1:		make-3.82-lib64.patch
 Patch2:		make-fix_whitespace_tokenization.diff
 Patch3:		make-3.80-gfortran.patch
@@ -14,8 +14,6 @@ Patch3:		make-3.80-gfortran.patch
 # https://savannah.gnu.org/bugs/?30612
 Patch4:		make-3.82-savannah-bugs-30612-30723.patch.bz2
 BuildRequires:	gettext-devel
-Requires(pre):		info-install
-Requires(post):		info-install
 
 %description
 A GNU tool for controlling the generation of executables and other
@@ -46,27 +44,16 @@ make check
 
 %install
 rm -rf %{buildroot}
-
 %makeinstall_std
 
 ln -sf make %{buildroot}%{_bindir}/gmake
 
 %find_lang %{name}
 
-%clean
-rm -rf %{buildroot}
-
-%post
-%_install_info make.info
-
-%preun
-%_remove_install_info make.info
-
-%files -f %name.lang
-%defattr(-,root,root)
+%files -f %{name}.lang
 %doc ABOUT-NLS AUTHORS ChangeLog README README.customs SCOPTIONS NEWS
 %doc glob/COPYING.LIB glob/ChangeLog
-%_bindir/make
-%_bindir/gmake
-%_mandir/man1/make.1*
-%_infodir/make.info*
+%{_bindir}/make
+%{_bindir}/gmake
+%{_mandir}/man1/make.1*
+%{_infodir}/make.info*
