@@ -1,2 +1,3 @@
 sources:
-  "make-3.82.tar.bz2:"	b8a8a99e4cb636a213aad3816dda827a92b9bbed
+  "make-3.82-savannah-bugs-30612-30723.patch.bz2": 6b558158940710b0135e31eacfdbef7762945876
+  "make-3.82.tar.bz2": b8a8a99e4cb636a213aad3816dda827a92b9bbed
