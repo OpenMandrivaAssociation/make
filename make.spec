@@ -1,17 +1,47 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Version:	3.82
-Release:	5
+Release:	6
 Epoch:		1
 Url:		http://www.gnu.org/directory/GNU/make.html
 License:	GPLv2+
 Group:		Development/Other
-Source:		ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
-Patch1:		make-3.82-lib64.patch
-Patch3:		make-3.80-gfortran.patch
-# https://savannah.gnu.org/bugs/?30723
-# https://savannah.gnu.org/bugs/?30612
-Patch4:		make-3.82-savannah-bugs-30612-30723.patch.bz2
+Source0:	ftp://ftp.gnu.org/pub/gnu/make/%name-%version.tar.bz2
+Patch1:		make-3.82-noclock_gettime.patch
+Patch2:		make-3.82-j8k.patch
+Patch3:		make-3.82-getcwd.patch
+Patch4:		make-3.82-err-reporting.patch
+Patch5:		make-3.81-memory.patch
+
+# Upstream: https://savannah.gnu.org/bugs/?30748
+Patch6:		make-3.82-weird-shell.patch
+
+Patch7:		make-3.82-newlines.patch
+Patch8:		make-3.82-jobserver.patch
+Patch9:		make-3.82-bugfixes.patch
+Patch10:	make-3.82-sort-blank.patch
+Patch11:	make-3.82-copy-on-expand.patch
+
+# Upstream: https://savannah.gnu.org/bugs/?33873
+Patch12:	make-3.82-parallel-remake.patch
+
+# http://savannah.gnu.org/bugs/?34335
+Patch13:	make-3.82-warn_undefined_function.patch
+
+# http://lists.gnu.org/archive/html/bug-make/2011-06/msg00032.html
+Patch14:	make-3.82-trace.patch
+
+# http://lists.gnu.org/archive/html/bug-make/2011-04/msg00002.html
+Patch15:	make-3.82-expensive_glob.patch
+
+# Upstream: https://savannah.gnu.org/bugs/?30653
+Patch16:	make-3.82-dont-prune-intermediate.patch
+
+# AArch64 patch
+Patch17:	make-aarch64.patch
+Patch18:	make-3.82-lib64.patch
+Patch19:	make-3.80-gfortran.patch
+
 BuildRequires:	gettext-devel
 
 %description
@@ -27,9 +57,25 @@ commonly used to simplify the process of installing programs.
 
 %prep
 %setup -q
-%patch1 -p1 -b .lib64
-%patch3 -p1 -b .gfortran
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 %patch4 -p1
+#%patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
+%patch11 -p1
+%patch12 -p0
+%patch13 -p2
+%patch14 -p1
+%patch15 -p0
+%patch16 -p0
+%patch17 -p1
+%patch18 -p1
+%patch19 -p1
 
 %build
 %configure2_5x \
@@ -48,7 +94,6 @@ ln -sf make %{buildroot}%{_bindir}/gmake
 %find_lang %{name}
 
 %files -f %name.lang
-%defattr(-,root,root)
 %doc ABOUT-NLS AUTHORS ChangeLog README README.customs SCOPTIONS NEWS
 %doc glob/COPYING.LIB glob/ChangeLog
 %_bindir/make
