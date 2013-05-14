@@ -1,0 +1,13 @@
+diff --git a/doc/make.texi b/doc/make.texi
+index 27b0f72..9e1887e 100644
+--- a/doc/make.texi
++++ b/doc/make.texi
+@@ -8472,7 +8472,7 @@ from complicated nests of recursive @code{make} commands.
+ rarely need to specify this option since @samp{make} does it for you;
+ see @ref{-w Option, ,The @samp{--print-directory} Option}.)
+ 
+-@itemx --no-print-directory
++@item --no-print-directory
+ @cindex @code{--no-print-directory}
+ Disable printing of the working directory under @code{-w}.
+ This option is useful when @code{-w} is turned on automatically,

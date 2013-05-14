@@ -41,6 +41,7 @@ Patch16:	make-3.82-dont-prune-intermediate.patch
 Patch17:	make-aarch64.patch
 Patch18:	make-3.82-lib64.patch
 Patch19:	make-3.80-gfortran.patch
+Patch20:	make-texinfo5-item.patch
 
 BuildRequires:	gettext-devel
 
@@ -76,6 +77,7 @@ commonly used to simplify the process of installing programs.
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
+%patch20 -p1
 
 %build
 %configure2_5x \
