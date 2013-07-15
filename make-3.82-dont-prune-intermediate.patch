@@ -10,8 +10,8 @@ RCS file: /sources/make/make/remake.c,v
 retrieving revision 1.153
 retrieving revision 1.154
 diff -u -r1.153 -r1.154
---- remake.c	5 Mar 2012 14:10:45 -0000	1.153
-+++ remake.c	10 Sep 2012 02:36:05 -0000	1.154
+--- ./remake.c	5 Mar 2012 14:10:45 -0000	1.153
++++ ./remake.c	10 Sep 2012 02:36:05 -0000	1.154
 @@ -612,6 +612,10 @@
                  d->file->dontcare = file->dontcare;
                }
@@ -29,8 +29,8 @@ RCS file: /sources/make/make/tests/scripts/features/parallelism,v
 retrieving revision 1.19
 retrieving revision 1.20
 diff -u -r1.19 -r1.20
---- tests/scripts/features/parallelism	4 Mar 2012 00:24:32 -0000	1.19
-+++ tests/scripts/features/parallelism	10 Sep 2012 02:36:05 -0000	1.20
+--- ./tests/scripts/features/parallelism	4 Mar 2012 00:24:32 -0000	1.19
++++ ./tests/scripts/features/parallelism	10 Sep 2012 02:36:05 -0000	1.20
 @@ -214,6 +214,23 @@
      rmfiles(qw(foo.y foo.y.in main.bar));
  }

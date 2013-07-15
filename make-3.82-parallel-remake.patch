@@ -4,8 +4,8 @@ RCS file: /sources/make/make/main.c,v
 retrieving revision 1.247
 retrieving revision 1.246
 diff -u -r1.247 -r1.246
---- main.c	18 Sep 2011 23:39:26 -0000	1.247
-+++ main.c	29 Aug 2010 23:05:27 -0000	1.246
+--- ./main.c	18 Sep 2011 23:39:26 -0000	1.247
++++ ./main.c	29 Aug 2010 23:05:27 -0000	1.246
 @@ -2089,6 +2089,11 @@
  
            ++restarts;
