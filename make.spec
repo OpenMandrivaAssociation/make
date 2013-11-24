@@ -1,38 +1,15 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
-Version:	3.82
-Release:	7
+Version:	4.0
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.bz2
 Patch1:		make-3.82-noclock_gettime.patch
-Patch2:		make-3.82-j8k.patch
-Patch3:		make-3.82-getcwd.patch
-Patch4:		make-3.82-err-reporting.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
 Patch6:		make-3.82-weird-shell.patch
-Patch7:		make-3.82-newlines.patch
-Patch8:		make-3.82-jobserver.patch
-Patch9:		make-3.82-bugfixes.patch
-Patch10:	make-3.82-sort-blank.patch
-Patch11:	make-3.82-copy-on-expand.patch
-# Upstream: https://savannah.gnu.org/bugs/?33873
-Patch12:	make-3.82-parallel-remake.patch
-# http://savannah.gnu.org/bugs/?34335
-Patch13:	make-3.82-warn_undefined_function.patch
-# http://lists.gnu.org/archive/html/bug-make/2011-06/msg00032.html
-Patch14:	make-3.82-trace.patch
-# http://lists.gnu.org/archive/html/bug-make/2011-04/msg00002.html
-Patch15:	make-3.82-expensive_glob.patch
-# Upstream: https://savannah.gnu.org/bugs/?30653
-Patch16:	make-3.82-dont-prune-intermediate.patch
-# AArch64 patch
-Patch17:	make-aarch64.patch
-Patch18:	make-3.82-lib64.patch
-Patch19:	make-3.80-gfortran.patch
-Patch20:	make-texinfo5-item.patch
 
 BuildRequires:	gettext-devel
 
@@ -63,6 +40,9 @@ make check
 %makeinstall_std
 
 ln -sf make %{buildroot}%{_bindir}/gmake
+
+# We probably don't need this
+rm -rf %{buildroot}%{_includedir}
 
 %find_lang %{name}
 
