@@ -2,7 +2,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	3.82
-Release:	9
+Release:	10
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
