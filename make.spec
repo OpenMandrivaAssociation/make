@@ -2,7 +2,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.0
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -11,7 +11,7 @@ Patch1:		make-3.82-noclock_gettime.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
 Patch6:		make-3.82-weird-shell.patch
 
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-devel pkgconfig(guile-2.0)
 
 %description
 A GNU tool for controlling the generation of executables and other
@@ -29,7 +29,7 @@ commonly used to simplify the process of installing programs.
 %apply_patches
 
 %build
-%configure2_5x
+%configure2_5x	--with-guile
 %make
 
 %check
