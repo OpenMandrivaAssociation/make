@@ -1,8 +1,8 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
-Version:	4.0
-Release:	8
+Version:	4.1
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -47,7 +47,7 @@ rm -rf %{buildroot}%{_includedir}
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc ABOUT-NLS AUTHORS ChangeLog README README.customs SCOPTIONS NEWS
+%doc ABOUT-NLS AUTHORS README README.customs SCOPTIONS NEWS
 %doc glob/COPYING.LIB glob/ChangeLog
 %{_bindir}/make
 %{_bindir}/gmake
