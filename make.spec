@@ -48,9 +48,11 @@ automake -a
 
 %make
 
+%if ! %{cross_compiling}
 %check
 # all tests must pass
 make check
+%endif
 
 %install
 %makeinstall_std
