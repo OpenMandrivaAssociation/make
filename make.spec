@@ -62,7 +62,7 @@ ln -sf make %{buildroot}%{_bindir}/gmake
 # We probably don't need this
 rm -rf %{buildroot}%{_includedir}
 
-%find_lang %{name}
+%find_lang %{name} || touch %{name}.lang
 
 %files -f %{name}.lang
 %doc ABOUT-NLS AUTHORS README README.customs SCOPTIONS NEWS
