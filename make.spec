@@ -12,6 +12,7 @@ Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.bz2
 Patch1:		make-3.82-noclock_gettime.patch
 # Don't reimplement stuff that's already in glibc, musl and friends
 Patch2:		make-4.1-less-bloat.patch
+Patch3:		make-4.1-fix_null_returns_from_ttyname.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
 Patch6:		make-3.82-weird-shell.patch
 
