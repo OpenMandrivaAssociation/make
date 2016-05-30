@@ -4,7 +4,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -14,6 +14,7 @@ Patch1:		make-3.82-noclock_gettime.patch
 Patch2:		make-4.1-less-bloat.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
 Patch6:		make-3.82-weird-shell.patch
+Patch7:		make-4.2-double-colon-revert.patch
 
 BuildRequires:	gettext-devel
 %if %{with guile}
