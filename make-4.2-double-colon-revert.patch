@@ -1,32 +1,31 @@
-reverted:
---- b/remake.c
-+++ a/remake.c
-@@ -320,7 +320,7 @@
+--- make-4.2.1/remake.c.0007~	2016-05-31 09:17:26.000000000 +0200
++++ make-4.2.1/remake.c	2016-06-13 12:09:49.318086392 +0200
+@@ -321,7 +321,7 @@ update_file (struct file *file, unsigned
              && !f->dontcare && f->no_diag))
          {
            DBF (DB_VERBOSE, _("Pruning file '%s'.\n"));
-+          return f->command_state == cs_finished ? f->update_status : 0;
 -          return f->command_state == cs_finished ? f->update_status : us_success;
++          return f->command_state == cs_finished ? f->update_status : 0;
          }
      }
  
-@@ -344,9 +344,12 @@
+@@ -345,9 +345,12 @@ update_file (struct file *file, unsigned
  
        if (f->command_state == cs_running
            || f->command_state == cs_deps_running)
+-        /* Don't run other :: rules for this target until
+-           this rule is finished.  */
+-        return us_success;
 +        {
 +          /* Don't run the other :: rules for this
 +             file until this rule is finished.  */
 +          status = us_success;
 +          break;
 +        }
--        /* Don't run other :: rules for this target until
--           this rule is finished.  */
--        return us_success;
  
        if (new > status)
          status = new;
-@@ -1271,7 +1274,6 @@
+@@ -1272,7 +1275,6 @@ FILE_TIMESTAMP
  f_mtime (struct file *file, int search)
  {
    FILE_TIMESTAMP mtime;
@@ -34,14 +33,14 @@ reverted:
  
    /* File's mtime is not known; must get it from the system.  */
  
-@@ -1448,13 +1450,10 @@
+@@ -1449,13 +1451,10 @@ f_mtime (struct file *file, int search)
          }
      }
  
-+  /* Store the mtime into all the entries for this file.  */
 -  /* Store the mtime into all the entries for this file for which it is safe
 -     to do so: avoid propagating timestamps to double-colon rules that haven't
 -     been examined so they're run or not based on the pre-update timestamp.  */
++  /* Store the mtime into all the entries for this file.  */
    if (file->double_colon)
      file = file->double_colon;
  
@@ -49,30 +48,29 @@ reverted:
    do
      {
        /* If this file is not implicit but it is intermediate then it was
-@@ -1466,8 +1465,7 @@
+@@ -1467,8 +1466,7 @@ f_mtime (struct file *file, int search)
            && !file->tried_implicit && file->intermediate)
          file->intermediate = 0;
  
-+      file->last_mtime = mtime;
 -      if (file->updated == propagate_timestamp)
 -        file->last_mtime = mtime;
++      file->last_mtime = mtime;
        file = file->prev;
      }
    while (file != 0);
-reverted:
---- b/tests/scripts/features/double_colon
-+++ a/tests/scripts/features/double_colon
-@@ -151,7 +151,8 @@
+--- make-4.2.1/tests/scripts/features/double_colon.0007~	2016-05-31 09:17:26.000000000 +0200
++++ make-4.2.1/tests/scripts/features/double_colon	2016-06-13 12:11:17.688187468 +0200
+@@ -151,7 +151,8 @@ two');
  
  unlink('result','one','two');
  
+-# TEST 10: SV 33399 : check for proper backslash handling
 +# TEST 10: check for proper backslash handling
 +#          Savannah bug #33399
--# TEST 10: SV 33399 : check for proper backslash handling
  
  run_make_test('
  a\ xb :: ; @echo one
-@@ -159,47 +160,5 @@
+@@ -159,62 +160,5 @@ a\ xb :: ; @echo two
  ',
                '', "one\ntwo\n");
  
@@ -113,6 +111,21 @@ reverted:
 -	sleep $*
 -',
 -              '-rs -j2 1 2 root', "all_one\nall_two\nroot\n");
+-
+-# SV 47995 : Parallel double-colon rules with FORCE
+-
+-run_make_test('
+-all:: ; @echo one
+-
+-all:: joe ; @echo four
+-
+-joe: FORCE ; touch joe-is-forced
+-
+-FORCE:
+-',
+-              '-j5', "one\ntouch joe-is-forced\nfour\n");
+-
+-unlink('joe-is-forced');
 -
  # This tells the test driver that the perl test script executed properly.
  1;
