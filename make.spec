@@ -1,5 +1,8 @@
 %bcond_without guile
 
+# (tpg) fix linking with LLVM/clang
+%global optflags --rtlib=compiler-rt
+
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
@@ -14,7 +17,9 @@ Patch1:		make-3.82-noclock_gettime.patch
 Patch2:		make-4.1-less-bloat.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
 Patch6:		make-3.82-weird-shell.patch
-#Patch7:		make-4.2-double-colon-revert.patch
+# (tpg) patches form CLR
+Patch7:		skip-tests-features-archive.patch
+Patch8:		0002-Fix_tests.patch
 
 BuildRequires:	gettext-devel
 %if %{with guile}
@@ -42,9 +47,9 @@ automake -a
 %build
 %configure \
 %if %{with guile}
-	--with-guile
+    --with-guile
 %else
-	--without-guile
+    --without-guile
 %endif
 
 %make
