@@ -1,8 +1,5 @@
 %bcond_without guile
 
-# (tpg) fix linking with LLVM/clang
-%global optflags --rtlib=compiler-rt
-
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
@@ -13,13 +10,20 @@ Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.bz2
 Patch1:		make-3.82-noclock_gettime.patch
+Patch2:		make-4.2-j8k.patch
 # Don't reimplement stuff that's already in glibc, musl and friends
-Patch2:		make-4.1-less-bloat.patch
+Patch3:		make-4.1-less-bloat.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
-Patch6:		make-3.82-weird-shell.patch
+Patch4:		make-3.82-weird-shell.patch
 # (tpg) patches form CLR
-Patch7:		skip-tests-features-archive.patch
-Patch8:		0002-Fix_tests.patch
+Patch5:		skip-tests-features-archive.patch
+Patch6:		0002-Fix_tests.patch
+# Upstream patch: https://git.savannah.gnu.org/cgit/make.git/patch/?id=193f1e81edd6b1b56b0eb0ff8aa4b41c7b4257b4
+# Fixes wrong assumptions of glibc's glob internals.
+Patch7:		make-4.2.1-glob-fix-2.patch
+# Upstream patch: https://git.savannah.gnu.org/cgit/make.git/patch/?id=48c8a116a914a325a0497721f5d8b58d5bba34d4
+# Fixes incorrect use of glibc 2.27 glob internals.
+Patch8:		make-4.2.1-glob-fix.patch
 
 BuildRequires:	gettext-devel
 %if %{with guile}
