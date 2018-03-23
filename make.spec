@@ -4,7 +4,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.2.1
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -56,16 +56,20 @@ automake -a
     --without-guile
 %endif
 
-%make
+./build.sh
+cp make make-new
+./make-new clean
+
+./make-new %{?_smp_mflags}
 
 %if ! %{cross_compiling}
 %check
 # all tests must pass
-make check
+./make-new check
 %endif
 
 %install
-%makeinstall_std
+./make install DESTDIR=%{buildroot}
 
 ln -sf make %{buildroot}%{_bindir}/gmake
 
