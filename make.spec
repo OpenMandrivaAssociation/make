@@ -1,10 +1,10 @@
-%bcond_with guile
+%bcond_without guile
 
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.2.1
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -24,10 +24,12 @@ Patch7:		make-4.2.1-glob-fix-2.patch
 # Upstream patch: https://git.savannah.gnu.org/cgit/make.git/patch/?id=48c8a116a914a325a0497721f5d8b58d5bba34d4
 # Fixes incorrect use of glibc 2.27 glob internals.
 Patch8:		make-4.2.1-glob-fix.patch
+# Fix build with guile 2.2 (as opposed to 1.8 and 2.0)
+Patch9:		make-4.2.1-guile-2.2.patch
 
 BuildRequires:	gettext-devel
 %if %{with guile}
-BuildRequires:	pkgconfig(guile-2.0)
+BuildRequires:	pkgconfig(guile-2.2)
 %endif
 
 %description

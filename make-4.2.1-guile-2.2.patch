@@ -1,0 +1,17 @@
+diff -up make-4.2.1/configure.ac.omv~ make-4.2.1/configure.ac
+--- make-4.2.1/configure.ac.omv~	2018-05-14 10:33:53.416191554 +0000
++++ make-4.2.1/configure.ac	2018-05-14 10:34:40.298273470 +0000
+@@ -168,9 +168,10 @@ AC_ARG_WITH([guile], [AS_HELP_STRING([--
+ # comes with it's own PC file so we have to specify them as individual
+ # packages.  Ugh.
+ AS_IF([test "x$with_guile" != xno],
+-[ PKG_CHECK_MODULES([GUILE], [guile-2.0], [have_guile=yes],
+-  [PKG_CHECK_MODULES([GUILE], [guile-1.8], [have_guile=yes],
+-    [have_guile=no])])
++[ PKG_CHECK_MODULES([GUILE], [guile-2.2], [have_guile=yes],
++  [PKG_CHECK_MODULES([GUILE], [guile-2.0], [have_guile=yes],
++   [PKG_CHECK_MODULES([GUILE], [guile-1.8], [have_guile=yes],
++    [have_guile=no])])])
+ ])
+ 
+ AS_IF([test "$have_guile" = yes],
