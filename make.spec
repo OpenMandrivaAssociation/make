@@ -28,6 +28,7 @@ Patch8:		make-4.2.1-glob-fix.patch
 Patch9:		make-4.2.1-guile-2.2.patch
 
 BuildRequires:	gettext-devel
+BuildRequires:	gmp-devel
 %if %{with guile}
 BuildRequires:	pkgconfig(guile-2.2)
 %endif
