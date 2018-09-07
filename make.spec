@@ -32,6 +32,7 @@ BuildRequires:	gmp-devel
 %if %{with guile}
 BuildRequires:	pkgconfig(guile-2.2)
 %endif
+Suggests:   %{name}-doc
 
 %description
 A GNU tool for controlling the generation of executables and other
@@ -43,6 +44,15 @@ makefile.
 
 The GNU make tool should be installed on your system because it is
 commonly used to simplify the process of installing programs.
+
+%package doc
+Summary:    Documentation for %{name}
+Group:      Books/Computer books
+BuildArch:	noarch
+Requires:   %{name}
+
+%description doc
+Documentation, manuals and infos for %{make}.
 
 %prep
 %setup -q
@@ -82,9 +92,11 @@ rm -rf %{buildroot}%{_includedir}
 %find_lang %{name} || touch %{name}.lang
 
 %files -f %{name}.lang
-%doc ABOUT-NLS AUTHORS README README.customs SCOPTIONS NEWS
-%doc glob/COPYING.LIB glob/ChangeLog
 %{_bindir}/make
 %{_bindir}/gmake
+
+%files doc
+%doc ABOUT-NLS AUTHORS README README.customs SCOPTIONS NEWS
+%doc glob/COPYING.LIB glob/ChangeLog
 %{_mandir}/man1/make.1*
 %{_infodir}/make.info*
