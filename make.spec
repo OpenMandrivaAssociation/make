@@ -4,7 +4,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.2.1
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -55,8 +55,7 @@ Requires:   %{name}
 Documentation, manuals and infos for %{make}.
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 aclocal -I config
 automake -a
