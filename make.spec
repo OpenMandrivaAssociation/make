@@ -4,7 +4,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.2.1
-Release:	7
+Release:	8
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -26,6 +26,7 @@ Patch7:		make-4.2.1-glob-fix-2.patch
 Patch8:		make-4.2.1-glob-fix.patch
 # Fix build with guile 2.2 (as opposed to 1.8 and 2.0)
 Patch9:		make-4.2.1-guile-2.2.patch
+Patch10:	pselect-non-blocking.patch
 
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel
