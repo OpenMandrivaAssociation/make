@@ -3,12 +3,12 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
-Version:	4.2.1
-Release:	8
+Version:	4.3
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
-Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.lz
 Patch1:		make-3.82-noclock_gettime.patch
 Patch2:		make-4.2-j8k.patch
 # Don't reimplement stuff that's already in glibc, musl and friends
@@ -27,7 +27,7 @@ Patch8:		make-4.2.1-glob-fix.patch
 # Fix build with guile 2.2 (as opposed to 1.8 and 2.0)
 Patch9:		make-4.2.1-guile-2.2.patch
 Patch10:	pselect-non-blocking.patch
-
+BuildRequires:	lzip
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel
 %if %{with guile}
@@ -47,10 +47,10 @@ The GNU make tool should be installed on your system because it is
 commonly used to simplify the process of installing programs.
 
 %package doc
-Summary:    Documentation for %{name}
-Group:      Books/Computer books
+Summary:	Documentation for %{name}
+Group:		Books/Computer books
 BuildArch:	noarch
-Requires:   %{name}
+Requires:	%{name}
 
 %description doc
 Documentation, manuals and infos for %{make}.
