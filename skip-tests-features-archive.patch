@@ -1,9 +1,9 @@
-diff -Naur make-4.2.1/tests/scripts/features/archives make-4.2.1.tpg/tests/scripts/features/archives
---- make-4.2.1/tests/scripts/features/archives	2016-02-29 06:31:16.000000000 +0000
-+++ make-4.2.1.tpg/tests/scripts/features/archives	2018-02-11 22:28:19.889971332 +0000
-@@ -8,6 +8,14 @@
- # If this instance of make doesn't support archives, skip it
- exists $FEATURES{archives} or return -1;
+diff -up make-4.3/tests/scripts/features/archives.4~ make-4.3/tests/scripts/features/archives
+--- make-4.3/tests/scripts/features/archives.4~	2020-01-21 21:23:25.336545160 +0100
++++ make-4.3/tests/scripts/features/archives	2020-01-21 21:24:16.725543539 +0100
+@@ -12,6 +12,14 @@ exists $FEATURES{archives} or return -1;
+ # someone will need to port this test.
+ $port_type eq 'W32' and return -1;
  
 +#
 +# We build binutils with --enable-deterministic-archives, which causes
@@ -15,4 +15,4 @@ diff -Naur make-4.2.1/tests/scripts/features/archives make-4.2.1.tpg/tests/scrip
 +
  # Create some .o files to work with
  if ($osname eq 'VMS') {
-   use Cwd;
+   # VMS AR needs real object files at this time.

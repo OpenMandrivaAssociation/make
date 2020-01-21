@@ -1,23 +1,24 @@
---- make-4.2/Makefile.am.0002~	2016-05-22 21:35:46.676153083 +0200
-+++ make-4.2/Makefile.am	2016-05-22 21:37:35.515873977 +0200
-@@ -43,7 +43,7 @@ else
- endif
+diff -up make-4.3/Makefile.am.2~ make-4.3/Makefile.am
+--- make-4.3/Makefile.am.2~	2020-01-21 21:17:55.635555563 +0100
++++ make-4.3/Makefile.am	2020-01-21 21:20:19.656551019 +0100
+@@ -30,8 +30,8 @@ man_MANS =	doc/make.1
  
- make_SOURCES =	ar.c arscan.c commands.c default.c dir.c expand.c file.c \
--		function.c getopt.c getopt1.c guile.c implicit.c job.c load.c \
-+		function.c guile.c implicit.c job.c load.c \
- 		loadapi.c main.c misc.c $(ossrc) output.c read.c remake.c \
- 		rule.c signame.c strcache.c variable.c version.c vpath.c \
- 		hash.c $(remote)
-@@ -51,9 +51,9 @@ make_SOURCES =	ar.c arscan.c commands.c
- EXTRA_make_SOURCES = vmsjobs.c remote-stub.c remote-cstms.c
+ make_SRCS =	src/ar.c src/arscan.c src/commands.c src/commands.h \
+ 		src/debug.h src/default.c src/dep.h src/dir.c src/expand.c \
+-		src/file.c src/filedef.h src/function.c src/getopt.c \
+-		src/getopt.h src/getopt1.c src/gettext.h src/guile.c \
++		src/file.c src/filedef.h src/function.c \
++		src/guile.c \
+ 		src/hash.c src/hash.h src/implicit.c src/job.c src/job.h \
+ 		src/load.c src/loadapi.c src/main.c src/makeint.h src/misc.c \
+ 		src/os.h src/output.c src/output.h src/read.c src/remake.c \
+@@ -59,8 +59,7 @@ loadavg_SRCS =	lib/getloadavg.c
+ make_SOURCES =	$(make_SRCS)
+ EXTRA_make_SOURCES = $(amiga_SRCS) $(vms_SRCS)
  
- noinst_HEADERS = commands.h dep.h filedef.h job.h makeint.h rule.h variable.h \
--		debug.h getopt.h gettext.h hash.h output.h os.h
-+		debug.h hash.h output.h os.h
+-make_LDADD =	$(LIBOBJS) $(GUILE_LIBS) lib/libgnu.a $(GETLOADAVG_LIBS) \
+-		@LIBINTL@
++make_LDADD =	$(LIBOBJS) $(GUILE_LIBS) lib/libgnu.a $(GETLOADAVG_LIBS)
  
--make_LDADD =	@LIBOBJS@ @ALLOCA@ $(GLOBLIB) @GETLOADAVG_LIBS@ @LIBINTL@ \
-+make_LDADD =	@LIBOBJS@ @ALLOCA@ $(GLOBLIB) @GETLOADAVG_LIBS@ \
- 		$(GUILE_LIBS)
- # Only process if target is MS-Windows
- if WINDOWSENV
+ localedir =	$(datadir)/locale
+ 

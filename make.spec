@@ -10,23 +10,13 @@ Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.lz
 Patch1:		make-3.82-noclock_gettime.patch
-Patch2:		make-4.2-j8k.patch
+Patch2:		make-4.3-clang.patch
 # Don't reimplement stuff that's already in glibc, musl and friends
 Patch3:		make-4.1-less-bloat.patch
 # Upstream: https://savannah.gnu.org/bugs/?30748
 Patch4:		make-3.82-weird-shell.patch
 # (tpg) patches form CLR
 Patch5:		skip-tests-features-archive.patch
-Patch6:		0002-Fix_tests.patch
-# Upstream patch: https://git.savannah.gnu.org/cgit/make.git/patch/?id=193f1e81edd6b1b56b0eb0ff8aa4b41c7b4257b4
-# Fixes wrong assumptions of glibc's glob internals.
-Patch7:		make-4.2.1-glob-fix-2.patch
-# Upstream patch: https://git.savannah.gnu.org/cgit/make.git/patch/?id=48c8a116a914a325a0497721f5d8b58d5bba34d4
-# Fixes incorrect use of glibc 2.27 glob internals.
-Patch8:		make-4.2.1-glob-fix.patch
-# Fix build with guile 2.2 (as opposed to 1.8 and 2.0)
-Patch9:		make-4.2.1-guile-2.2.patch
-Patch10:	pselect-non-blocking.patch
 BuildRequires:	lzip
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel
@@ -58,7 +48,7 @@ Documentation, manuals and infos for %{make}.
 %prep
 %autosetup -p1
 
-aclocal -I config
+aclocal -I m4
 automake -a
 
 %build
@@ -97,6 +87,5 @@ rm -rf %{buildroot}%{_includedir}
 
 %files doc
 %doc ABOUT-NLS AUTHORS README README.customs SCOPTIONS NEWS
-%doc glob/COPYING.LIB glob/ChangeLog
 %{_mandir}/man1/make.1*
 %{_infodir}/make.info*
