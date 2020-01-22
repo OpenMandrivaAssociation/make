@@ -1,0 +1,12 @@
+diff -up make-4.3/src/makeint.h.omv~ make-4.3/src/makeint.h
+--- make-4.3/src/makeint.h.omv~	2020-01-22 03:51:51.051809828 +0100
++++ make-4.3/src/makeint.h	2020-01-22 03:52:21.526808866 +0100
+@@ -115,7 +115,7 @@ extern int errno;
+ #endif
+ 
+ /* Some systems define _POSIX_VERSION but are not really POSIX.1.  */
+-#if (defined (butterfly) || defined (__arm) || (defined (__mips) && defined (_SYSTYPE_SVR3)) || (defined (sequent) && defined (i386)))
++#if (defined (butterfly) || (defined (__mips) && defined (_SYSTYPE_SVR3)) || (defined (sequent) && defined (i386)))
+ # undef POSIX
+ #endif
+ 

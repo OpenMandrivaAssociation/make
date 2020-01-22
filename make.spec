@@ -17,6 +17,8 @@ Patch3:		make-4.1-less-bloat.patch
 Patch4:		make-3.82-weird-shell.patch
 # (tpg) patches form CLR
 Patch5:		skip-tests-features-archive.patch
+# Fix armv7hnl build
+Patch6:		make-4.3-arm-buildfix.patch
 BuildRequires:	lzip
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel
