@@ -4,7 +4,7 @@ Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
 Version:	4.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -19,6 +19,9 @@ Patch4:		make-3.82-weird-shell.patch
 Patch5:		skip-tests-features-archive.patch
 # Fix armv7hnl build
 Patch6:		make-4.3-arm-buildfix.patch
+# Fix building OpenJDK (and possibly others)
+# https://savannah.gnu.org/bugs/index.php?57676
+Patch7:		make-4.3-bug57676.patch
 BuildRequires:	lzip
 BuildRequires:	gettext-devel
 BuildRequires:	gmp-devel
