@@ -1,4 +1,4 @@
-%bcond_without guile
+%bcond_wito guile
 
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
