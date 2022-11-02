@@ -17,11 +17,7 @@ Patch3:		make-4.1-less-bloat.patch
 Patch4:		make-3.82-weird-shell.patch
 # (tpg) patches form CLR
 Patch5:		skip-tests-features-archive.patch
-# Fix armv7hnl build
-Patch6:		make-4.3-arm-buildfix.patch
-# Fix building OpenJDK (and possibly others)
-# https://savannah.gnu.org/bugs/index.php?57676
-Patch7:		make-4.3-bug57676.patch
+
 BuildRequires:	lzip
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(gmp)

@@ -1,14 +1,28 @@
-diff -up make-3.82/configure\~ make-3.82/configure
---- make-3.82/configure~	2010-07-28 07:41:51.000000000 +0200
-+++ make-3.82/configure	2010-08-11 15:07:50.000000000 +0200
-@@ -7215,7 +7215,7 @@ return clock_gettime ();
+# Assume we don't have clock_gettime in configure, so that
+# make is not linked against -lpthread (and thus does not
+# limit stack to 2MB).
+
+diff -Naur make-4.4/configure make-4.4.tpg/configure
+--- make-4.4/configure	2022-10-31 06:23:40.000000000 +0000
++++ make-4.4.tpg/configure	2022-11-02 10:47:52.413495984 +0000
+@@ -12467,7 +12467,7 @@
    return 0;
  }
  _ACEOF
--for ac_lib in '' rt posix4; do
-+for ac_lib in '' posix4; do
+-for ac_lib in '' rt posix4
++for ac_lib in '' posix4
+ do
    if test -z "$ac_lib"; then
      ac_res="none required"
-   else
-
-Diff finished.  Wed Aug 11 15:07:59 2010
+diff -Naur make-4.4/configure.ac make-4.4.tpg/configure.ac
+--- make-4.4/configure.ac	2022-10-31 06:23:04.000000000 +0000
++++ make-4.4.tpg/configure.ac	2022-11-02 10:47:39.903546384 +0000
+@@ -102,7 +102,7 @@
+ AS_IF([test "$make_cv_file_timestamp_hi_res" = yes],
+ [ # Solaris 2.5.1 needs -lposix4 to get the clock_gettime function.
+   # Solaris 7 prefers the library name -lrt to the obsolescent name -lposix4.
+-  AC_SEARCH_LIBS([clock_gettime], [rt posix4])
++  AC_SEARCH_LIBS([clock_gettime], [posix4])
+   AS_IF([test "$ac_cv_search_clock_gettime" != no],
+   [ AC_DEFINE([HAVE_CLOCK_GETTIME], [1],
+               [Define to 1 if you have the clock_gettime function.])
