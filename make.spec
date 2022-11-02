@@ -3,8 +3,8 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
-Version:	4.3
-Release:	2
+Version:	4.4
+Release:	1
 License:	GPLv2+
 Group:		Development/Other
 Url:		http://www.gnu.org/directory/GNU/make.html
@@ -24,7 +24,7 @@ Patch6:		make-4.3-arm-buildfix.patch
 Patch7:		make-4.3-bug57676.patch
 BuildRequires:	lzip
 BuildRequires:	gettext-devel
-BuildRequires:	gmp-devel
+BuildRequires:	pkgconfig(gmp)
 %if %{with guile}
 BuildRequires:	pkgconfig(guile-2.2)
 %endif
