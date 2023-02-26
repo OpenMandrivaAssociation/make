@@ -3,7 +3,7 @@
 Summary:	A GNU tool which simplifies the build process for users
 Name:		make
 Epoch:		1
-Version:	4.4
+Version:	4.4.1
 Release:	1
 License:	GPLv2+
 Group:		Development/Other
