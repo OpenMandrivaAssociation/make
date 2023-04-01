@@ -61,7 +61,11 @@ automake -a
 %endif
 
 ./build.sh
+%if %{cross_compiling}
+ln -s $(which make) make-new
+%else
 cp make make-new
+%endif
 ./make-new clean
 
 ./make-new %{?_smp_mflags}
@@ -77,7 +81,11 @@ cp make make-new
 %endif
 
 %install
+%if %{cross_compiling}
+make install DESTDIR=%{buildroot}
+%else
 ./make install DESTDIR=%{buildroot}
+%endif
 
 ln -sf make %{buildroot}%{_bindir}/gmake
 
