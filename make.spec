@@ -7,7 +7,7 @@ Version:	4.4.1
 Release:	2
 License:	GPLv2+
 Group:		Development/Other
-Url:		http://www.gnu.org/directory/GNU/make.html
+Url:		https://www.gnu.org/directory/GNU/make.html
 Source0:	ftp://ftp.gnu.org/pub/gnu/make/%{name}-%{version}.tar.lz
 Patch1:		make-3.82-noclock_gettime.patch
 Patch2:		make-4.3-clang.patch
