@@ -18,6 +18,11 @@ Patch4:		make-3.82-weird-shell.patch
 # (tpg) patches form CLR
 Patch5:		skip-tests-features-archive.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	lzip
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(gmp)
